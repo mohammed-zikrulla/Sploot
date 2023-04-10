@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import LoginForm from "./components/LoginForm";
+import { useEffect } from "react";
+import axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Blogs from "./components/Blogs";
+import { useSelector, useDispatch } from "react-redux";
+import { updateToken } from "./Store";
 
 function App() {
+  const token = useSelector((state) => state.Token);
+  const dispatch = useDispatch();
+
+  const Token = localStorage.getItem("token");
+  console.log(Token);
+
+  // if (localStorage.getItem("token") != null) {
+  //   dispatch(updateToken(localStorage.getItem("token")));
+  // }
+
+  // useEffect(() => {
+  //   axios.defaults.headers.common["Authorization"] = `Bearer ${Token}`;
+  // }, [Token]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={token ? <Blogs Token={token} /> : <LoginForm />}
+        />
+        <Route
+          exact
+          path="/blogs"
+          element={token ? <Blogs Token={token} /> : <LoginForm />}
+        />
+      </Routes>
+    </Router>
   );
 }
 

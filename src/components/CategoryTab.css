@@ -1,0 +1,39 @@
+.category-tab {
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(255, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255);
+}
+
+.category-tab-container {
+    margin: 10px 20px;
+
+}
+
+.heading {
+    text-align: center;
+}
+
+.category-item {
+    margin-right: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+
+.category-name {
+    font-weight: bold;
+
+}
+
+.category-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.category-tab::-webkit-scrollbar {
+    display: none;
+}
